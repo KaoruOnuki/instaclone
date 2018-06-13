@@ -1,0 +1,6 @@
+<h1><%= @user.name %>さんのページ</h1>
+<p>メールアドレス<%= @user.email %></p>
+
+<p><%= image_tag @user.profile_picture %></p>
+<p><%= link_to 'プロフィール画像の設定', edit_user_path(@user) %></p>
+<p><%= link_to "ブログの投稿", new_blog_path %></p>

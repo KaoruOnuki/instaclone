@@ -1,0 +1,23 @@
+<%= form_with(model: user, local: true) do |f| %>
+  <% unless logged_in? %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+  <% end %>
+
+  <%= f.label :profile_picture %>
+  <%= image_tag(@user.profile_picture) if @user.profile_picture.present? %>
+  <%= f.file_field :profile_picture, id: :profile_picture %>
+  <%= f.hidden_field :profile_picture_cache %>
+
+  <% unless logged_in? %>
+    <%= f.submit "マイアカウントの作成" %>
+  <% else %>
+    <%= f.submit "変更の保存" %>
+  <% end %>
+<% end %>

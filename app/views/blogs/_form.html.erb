@@ -1,0 +1,38 @@
+<%= form_with(model: @blog, local: true, url: choose_new_or_edit) do |form| %>
+  <% if @blog.errors.any? %>
+    <div id="error_expalantion">
+      <h2><%= @blog.errors.count %>件のエラーあり</h2>
+      <ul>
+        <% @blog.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="blog-title">
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="blog-title">
+    <%= form.label :content %>
+    <%= form.text_field :content %>
+  </div>
+
+  <div class="blog-title input_file">
+    <%= form.label :image, id: :image_selection %>
+    <%= form.file_field :image, id: :blog_image %>
+    <%= form.hidden_field :image_cache %>
+    <div class="preview" id="preview"/>
+
+    <!-- 既存のファイルを表示したい：jsに渡す -->
+    <%= javascript_tag do %>
+      default_image = <%= raw @blog.image.url.to_json %>
+    <% end %>
+  </div>
+
+  <%= form.submit "投稿" %>
+<% end %>
+
+<%= link_to "一覧に戻る", blogs_path %>
