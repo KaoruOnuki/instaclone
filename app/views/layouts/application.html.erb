@@ -1,25 +1,67 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Instaclone</title>
+    <title>Capture Nature</title>
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag 'favicon.ico' %>
+
     <link href="https://fonts.googleapis.com/css?family=Handlee|Lobster|Poiret+One" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
   </head>
 
   <body>
+    <header>
+      <h1 class="grad_text">Capture Nature</h1>
+
+      <% if logged_in? && current_user.profile_picture? %>
+        <%= link_to user_path(current_user.id), title: "マイページ" do %>
+          <span id ="simple_border"><%= image_tag current_user.profile_picture %></span>
+        <% end %>
+      <% elsif logged_in? %>
+        <%= link_to user_path(current_user.id), title: "マイページ" do %>
+          <span id ="grad_border"><i class="fas fa-user"></i></span>
+        <% end %>
+      <% else %>
+        <%= link_to new_user_path, title: "アカウント作成" do %>
+          <span id ="grad_border"><i class="fas fa-user"></i></span>
+        <% end %>
+        <%= link_to new_session_path, title:  "ログイン" do %>
+          <span id ="grad_border"><i class="fas fa-door-open"></i></span>
+        <% end %>
+      <% end %>
+    </header>
+
+    <%= yield %>
+
+    <div class="message">
       <% flash.each do |key, value| %>
         <%= content_tag(:div, value, class: "#{key}") %>
       <% end %>
-      <% if logged_in? %>
-        <%= link_to "Profile", user_path(current_user.id) %>
-        <%= link_to "Logout", session_path(current_user.id), method: :delete %>
-      <% else %>
-        <%= link_to "Signup", new_user_path %>
-        <%= link_to "Login", new_session_path %>
-      <% end %>
-    <%= yield %>
+    </div>
+
+    <footer>
+      <div class="bottom_icons">
+        <% if logged_in? %>
+          <%= link_to new_blog_path, title: "新規ブログの投稿" do %>
+            <span id ="grad_border"><i class="fas fa-edit"></i></span>
+          <% end %>
+          <%= link_to favorite_path(id: current_user.id), title: "お気に入り一覧" do %>
+            <span id ="grad_border"><i class="fas fa-heart"></i></span>
+          <% end %>
+
+          <%= link_to blogs_path, title: "ブログ一覧" do %>
+            <span id ="grad_border"><i class="fas fa-th"></i></span>
+          <% end %>
+
+          <%= link_to session_path(current_user.id), method: :delete, title: "ログアウト" do %>
+            <span id ="grad_border"><i class="fas fa-door-closed"></i></span>
+          <% end %>
+        <% end %>
+      </div>
+    </footer>
+
   </body>
 </html>

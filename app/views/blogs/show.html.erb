@@ -1,14 +1,25 @@
-<h1>ブログ詳細画面</h1>
-<p>タイトル：<%= @blog.title %></p>
-<p>内容：<%= @blog.content %></p>
-<p>画像：<%= image_tag @blog.image %></p>
+<div class="default_form container">
+  <h1>Blog content</h1>
+  <div class="blogs_list row">
+    <% unless @blog.user_id == current_user.id %>
+      <div class="input_column col-xs-12"><%= @blog.user.name %>さんの投稿</div>
+    <% end %>
+    <div class="col-xs-12 col-md-6">
+      <%= image_tag @blog.image %>
+    </div>
+  </div>
 
-<% unless @blog.user == current_user %>
-  <% if @favorite.present? %>
-   <%= link_to "お気に入り解除", favorite_path(id: @favorite.id), method: :delete, class: "btn btn-danger" %>
+  <div class="input_column row">#<%= @blog.title %></div>
+  <div class="input_column row"><%= @blog.content %></div>
+
+  <% if @blog.user_id == current_user.id %>
+    <span><%= link_to "編集", edit_blog_path(@blog.id), class: "grey_btn" %></span>
+    <span><%= link_to "削除", blog_path(@blog.id), method: :delete, data: {confirm: "本当に削除していいですか？"}, class: "grey_btn" %></span>
   <% else %>
-   <%= link_to "お気に入り登録", favorites_path(blog_id: @blog.id), method: :post, class: "btn btn-primary" %>
+    <% if @favorite.present? %>
+     <span id ="no_border_no"><i class="fas fa-heart"></i></span>&emsp;<%= link_to "お気に入り解除", favorite_path(id: @favorite.id), method: :delete %>
+    <% else %>
+     <span id ="no_border_yes"><i class="far fa-heart"></i></span>&emsp;<%= link_to "お気に入り登録", favorites_path(blog_id: @blog.id), method: :post %>
+    <% end %>
   <% end %>
-<% end %>
-
-<%= link_to "一覧に戻る", blogs_path %>
+</div>

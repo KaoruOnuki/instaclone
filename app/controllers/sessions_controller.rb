@@ -1,7 +1,4 @@
 class SessionsController < ApplicationController
-  def new
-  end
-
   def create
     user = User.find_by(email: params[:session][:email].downcase)
 
@@ -9,14 +6,14 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to user_path(user.id)
     else
-      flash[:danger] = "ログイン失敗"
+      flash[:danger] = "ログイン情報が正しくありません"
       render "new"
     end
   end
 
   def destroy
     session.delete(:user_id)
-    flash[:notice] = "ログアウトした"
+    flash[:notice] = "ログアウトしました"
     redirect_to new_session_path
   end
 end

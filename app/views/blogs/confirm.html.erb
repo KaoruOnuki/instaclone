@@ -1,14 +1,20 @@
-<h3>以下で送信</h3>
+<div class="default_form container">
+  <h1>Preview</h1>
   <%= form_with(model: @blog, url: blogs_path, local: true) do |form| %>
     <%= form.hidden_field :title %>
     <%= form.hidden_field :content %>
     <%= form.hidden_field :image_cache %>
 
-    <p>タイトル：<%= @blog.title %></p>
-    <p>内容：<%= @blog.content %></p>
-    <p>画像：<%= image_tag @blog.image %></p>
+    <div class="blogs_list row">
+      <div class="input_column col-xs-12">
+        <%= image_tag @blog.image %>
+      </div>
+    </div>
 
-    <%= form.submit "登録" %>
+    <div class="input_column row">#<%= @blog.title %></div>
+    <div class="input_column row"><%= @blog.content %></div>
+
+    <div class="input_column row"><%= form.submit "登録", class: "btn col-xs-12 col-md-offset-2 col-md-10" %></div>
   <% end %>
 
   <%= form_with(model: @blog, url: new_blog_path, local: true, method: "get") do |form| %>
@@ -16,5 +22,6 @@
     <%= form.hidden_field :content %>
     <%= form.hidden_field :image_cache %>
 
-    <%= form.submit "戻る", name: "back" %>
+    <div class="input_column row"><%= form.submit "戻る", name: "back", class: "btn col-xs-12 col-md-offset-2 col-md-10" %></div>
   <% end %>
+</div>

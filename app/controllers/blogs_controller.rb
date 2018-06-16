@@ -1,8 +1,8 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:edit, :show, :update, :destroy]
-  before_action :your_page, only: [:new, :edit, :show, :destroy]
+  before_action :your_page, only: [:index, :new, :edit, :show, :destroy]
     def index
-      @blogs = Blog.all
+        @blogs = Blog.all
     end
 
     def new
@@ -25,11 +25,6 @@ class BlogsController < ApplicationController
           format.json { render json: @blog.errors, status: :unprocessable_entity }
         end
       end
-      # if @blog.save
-      #   redirect_to blogs_path, notice: "ブログ作成"
-      # else
-      #   render "new"
-      # end
     end
 
     def show

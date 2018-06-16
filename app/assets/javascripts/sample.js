@@ -31,4 +31,17 @@ $(document).on('turbolinks:load', function(){
 
     reader.readAsDataURL(file);
   });
+
+  $(function() {
+    $('.photos').hover(
+      function() {
+        $(this).find('.options').addClass('text-active');
+        $(this).find('img').addClass('opacity_control');
+      },
+      function() {
+        $(this).find('.options').removeClass('text-active');
+        $(this).find('img').removeClass('opacity_control');
+      }
+    )
+  });
 });

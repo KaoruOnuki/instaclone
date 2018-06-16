@@ -1,0 +1,16 @@
+<div class="default_form container">
+  <div class="blogs_list row">
+    <h1>Your favorites</h1>
+    <div class="photo_column col-xs-12">
+      <% @user.favorites.each do |favorite| %>
+          <div class="photos">
+            <%= image_tag favorite.blog.image %>
+
+            <p class="options">
+              <span><%= link_to "詳細確認", blog_path(favorite.blog.id), class: "grey_btn" %></span>
+            </p>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>

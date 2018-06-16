@@ -1,7 +1,6 @@
 <%= form_with(model: @blog, local: true, url: choose_new_or_edit) do |form| %>
   <% if @blog.errors.any? %>
     <div id="error_expalantion">
-      <h2><%= @blog.errors.count %>件のエラーあり</h2>
       <ul>
         <% @blog.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
@@ -10,29 +9,24 @@
     </div>
   <% end %>
 
-  <div class="blog-title">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+  <div class="blogs_list row">
+    <div class="input_column col-xs-12">
+      <div class="preview" id="preview"></div>
+    </div>
   </div>
 
   <div class="blog-title">
-    <%= form.label :content %>
-    <%= form.text_field :content %>
-  </div>
-
-  <div class="blog-title input_file">
-    <%= form.label :image, id: :image_selection %>
+    <div class="input_column row"><%= form.label :image, id: :image_selection, class: "input col-xs-12", id: "choose_image" %></div>
     <%= form.file_field :image, id: :blog_image %>
     <%= form.hidden_field :image_cache %>
-    <div class="preview" id="preview"/>
 
     <!-- 既存のファイルを表示したい：jsに渡す -->
     <%= javascript_tag do %>
       default_image = <%= raw @blog.image.url.to_json %>
     <% end %>
   </div>
+  <div class="input_column row"><%= form.text_field :title, placeholder: "#タイトル", class: "input col-xs-12 col-md-offset-2 col-md-10" %></div>
+  <div class="input_column row"><%= form.text_field :content, placeholder: "コメント", class: "input col-xs-12 col-md-offset-2 col-md-10" %></div>
 
-  <%= form.submit "投稿" %>
+  <div class="input_column row"><%= form.submit "投稿", class: "btn col-xs-12 col-md-offset-2 col-md-10" %></div>
 <% end %>
-
-<%= link_to "一覧に戻る", blogs_path %>
