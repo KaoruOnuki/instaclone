@@ -18,8 +18,8 @@ class BlogsController < ApplicationController
       respond_to do |format|
         if @blog.save
           BlogMailer.blog_mail(@blog).deliver
-          format.html { redirect_to @blog, notice: "ブログ作成" }
-          format.json { render :show, status: :created, location: @blog }
+          format.html { redirect_to blogs_path, notice: "ブログ作成" }
+          format.json { render :index, status: :created, location: @blogs }
         else
           format.html { render :new }
           format.json { render json: @blog.errors, status: :unprocessable_entity }
