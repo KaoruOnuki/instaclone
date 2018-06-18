@@ -10,28 +10,28 @@
 
     <link href="https://fonts.googleapis.com/css?family=Handlee|Lobster|Poiret+One" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.0.10/font-awesome-animation.css" type="text/css" media="all" />
   </head>
 
   <body>
     <header>
-      <h1 class="grad_text">Capture Nature</h1>
+      <div class="icons">
+        <%= link_to root_path do %>
+          <span id="top_icon"><%= image_tag 'logo.png' %></span>
+        <% end %>
 
-      <% if logged_in? && current_user.profile_picture? %>
-        <%= link_to user_path(current_user.id), title: "マイページ" do %>
-          <span id ="simple_border"><%= image_tag current_user.profile_picture %></span>
+        <h1 class="grad_text">Capture Nature</h1>
+
+        <% if logged_in? && current_user.profile_picture? %>
+          <%= link_to user_path(current_user.id), title: "マイページ" do %>
+            <span id ="simple_border"><%= image_tag current_user.profile_picture %></span>
+          <% end %>
+        <% elsif logged_in? %>
+          <%= link_to user_path(current_user.id), title: "マイページ" do %>
+            <span id ="grad_border"><i class="fas fa-user"></i></span>
+          <% end %>
         <% end %>
-      <% elsif logged_in? %>
-        <%= link_to user_path(current_user.id), title: "マイページ" do %>
-          <span id ="grad_border"><i class="fas fa-user"></i></span>
-        <% end %>
-      <% else %>
-        <%= link_to new_user_path, title: "アカウント作成" do %>
-          <span id ="grad_border"><i class="fas fa-user"></i></span>
-        <% end %>
-        <%= link_to new_session_path, title:  "ログイン" do %>
-          <span id ="grad_border"><i class="fas fa-door-open"></i></span>
-        <% end %>
-      <% end %>
+      </div>
     </header>
 
     <%= yield %>
@@ -43,7 +43,7 @@
     </div>
 
     <footer>
-      <div class="bottom_icons">
+      <div class="icons">
         <% if logged_in? %>
           <%= link_to new_blog_path, title: "新規ブログの投稿" do %>
             <span id ="grad_border"><i class="fas fa-edit"></i></span>
@@ -58,6 +58,14 @@
 
           <%= link_to session_path(current_user.id), method: :delete, title: "ログアウト" do %>
             <span id ="grad_border"><i class="fas fa-door-closed"></i></span>
+          <% end %>
+
+        <% else %>
+          <%= link_to new_user_path, title: "アカウント作成" do %>
+            <span id ="grad_border"><i class="fas fa-user"></i></span>
+          <% end %>
+          <%= link_to new_session_path, title:  "ログイン" do %>
+            <span id ="grad_border"><i class="fas fa-door-open"></i></span>
           <% end %>
         <% end %>
       </div>

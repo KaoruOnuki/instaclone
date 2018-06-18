@@ -2,13 +2,13 @@
   <% unless logged_in? %>
     <div class="input_column row"><%= f.text_field :name, placeholder: "お名前", class: "input col-xs-12 col-md-offset-2 col-md-10" %></div>
     <div class="input_column row"><%= f.email_field :email, placeholder: "Eメールアドレス", class: "input col-xs-12 col-md-offset-2 col-md-10" %></div>
-    <div class="input_column row"><%= f.password_field :password, placeholder: "パスワード：6字以上で記入してください", class: "input col-xs-12 col-md-offset-2 col-md-10" %></div>
+    <div class="input_column row"><%= f.password_field :password, placeholder: "パスワード：半角英数6字以上で記入してください", class: "input col-xs-12 col-md-offset-2 col-md-10" %></div>
     <div class="input_column row"><%= f.password_field :password_confirmation, placeholder: "パスワード確認", class: "input col-xs-12 col-md-offset-2 col-md-10" %></div>
   <% end %>
 
   <div class="input_file">
     <div class="input_column row"><%= f.label :profile_picture, id: "choose_image", class: "input col-xs-12 col-md-offset-2 col-md-10" %></div>
-    <div class="input_column row profile_picture"><div id="preview_border"><div class="preview" id="preview"><%= image_tag("logo.png") %></div></div></div>
+    <div class="input_column row profile_picture"><div id="preview_border"><div class="preview profile_picture" id="preview"><%= image_tag("logo.png") %></div></div></div>
     <div class="input_column row"><%= f.file_field :profile_picture, id: "choose_image", class: "input col-xs-12 col-md-offset-2 col-md-10" %></div>
     <%= f.hidden_field :profile_picture_cache %>
 

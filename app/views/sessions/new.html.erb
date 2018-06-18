@@ -2,7 +2,7 @@
   <h1>Login</h1>
   <%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
     <div class="input_column row"><%= f.email_field :email, placeholder: "Eメールアドレス", class: "input col-xs-12 col-md-offset-2 col-md-10" %></div>
-    <div class="input_column row"><%= f.password_field :password, placeholder: "パスワード：6字以上で記入してください", class: "input col-xs-12 col-md-offset-2 col-md-10" %></div>
+    <div class="input_column row"><%= f.password_field :password, placeholder: "パスワード：半角英数6字以上で記入してください", class: "input col-xs-12 col-md-offset-2 col-md-10" %></div>
     <div class="input_column row"><%= f.submit "ログイン", class: "btn col-xs-12 col-md-offset-2 col-md-10" %></div>
   <% end %>
 </div>

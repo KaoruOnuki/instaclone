@@ -1,1 +1,102 @@
-<p>top</p>
+<div class="main">
+  <div class="info1">
+    <h1>Capture Nature</h1>
+    <p>日常に隠れている自然の写真を撮って投稿しよう</p>
+  </div>
+
+  <div class="figure1 unsplash">
+     <%= image_tag("image3.jpg") %>
+     <p class="photographer">Photo by Annie Spratt on Unsplash</p>
+  </div>
+
+  <div class="figure2 unsplash">
+     <%= image_tag("image5.jpg") %>
+     <p class="photographer">Photo by Harshal S. Hirve on Unsplash</p>
+  </div>
+
+  <div class="figure3 unsplash">
+     <%= image_tag("image9.jpg") %>
+     <p class="photographer">Photo by Marivi Pazos on Unsplash</p>
+  </div>
+
+  <div class="figure4 unsplash">
+     <%= image_tag("image8.jpg") %>
+     <p class="photographer">Photo by Maria Maliy on Unsplash</p>
+  </div>
+
+  <div class="info2">
+    <h1>In the city</h1>
+    <p>都会の街中であなたはいくつ自然を見つけられるかな</p>
+  </div>
+
+  <div class="figure5 unsplash">
+     <%= image_tag("image2.jpg") %>
+     <p class="photographer">Photo by Annie Spratt on Unsplash</p>
+  </div>
+
+  <div class="fadein figure6 unsplash">
+     <%= image_tag("image6.jpg") %>
+     <p class="photographer">Photo by Ivan Gromov on Unsplash</p>
+  </div>
+<!-- section two -->
+  <div class="fadein figure7 unsplash">
+      <%= image_tag("image11.jpg") %>
+      <p class="photographer">Photo by sergee bee on Unsplash</p>
+  </div>
+
+  <div class="fadein info3 linked_info">
+    <% if logged_in? %>
+      <h1>Introduce friends</h1>
+      <p>友達を紹介しよう</p>
+    <% else %>
+       <h1>Join us</h1>
+       <%= link_to new_user_path do %>
+        <p>初めての人はアカウントを作ろう&emsp;<i class="fas fa-angle-right faa-passing animated"></i></p>
+       <% end %>
+    <% end %>
+  </div>
+
+  <div class="fadein figure8 unsplash">
+     <%= image_tag("image4.jpg") %>
+     <p class="photographer">Photo by Biel Morro on Unsplash</p>
+  </div>
+
+  <div class="fadein figure9 unsplash">
+     <%= image_tag("image12.jpg") %>
+     <p class="photographer">Photo by Tim Gouw on Unsplash</p>
+  </div>
+
+  <div class="fadein figure10 unsplash">
+     <%= image_tag("image10.jpg") %>
+     <p class="photographer">Photo by Michele Ivani on Unsplash</p>
+  </div>
+
+  <div class="fadein figure11 unsplash">
+     <%= image_tag("image7.jpg") %>
+     <p class="photographer">Photo by kazuend on Unsplash</p>
+  </div>
+
+  <div class="fadein info4 linked_info">
+    <% if logged_in? %>
+      <h1>Log out</h1>
+      <%= link_to session_path(current_user.id), method: :delete, data: {confirm: "本当にログアウトしますか？"} do %>
+        <p>ログアウトする</p>
+      <% end %>
+    <% else %>
+      <h1>Log in</h1>
+      <%= link_to new_session_path do %>
+        <p>アカウントを持っていたらログインしよう&emsp;<i class="fas fa-angle-right faa-passing animated"></i></p>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="fadein figure12 unsplash">
+     <%= image_tag("image1.jpg") %>
+     <p class="photographer">Photo by Alex Block on Unsplash</p>
+  </div>
+
+  <div class="fadein figure13 unsplash">
+     <%= image_tag("image13.jpg") %>
+     <p class="photographer">Photo by virginia lackinger on Unsplash</p>
+  </div>
+</div>

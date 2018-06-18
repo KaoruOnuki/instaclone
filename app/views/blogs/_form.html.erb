@@ -10,13 +10,13 @@
   <% end %>
 
   <div class="blogs_list row">
-    <div class="input_column col-xs-12">
+    <div class="input_column col-xs-12 col-md-6">
       <div class="preview" id="preview"></div>
     </div>
   </div>
 
   <div class="blog-title">
-    <div class="input_column row"><%= form.label :image, id: :image_selection, class: "input col-xs-12", id: "choose_image" %></div>
+    <div class="input_column row"><%= form.label :image, id: :image_selection, class: "input col-xs-11 col-md-6", id: "choose_image" %></div>
     <%= form.file_field :image, id: :blog_image %>
     <%= form.hidden_field :image_cache %>
 
@@ -25,8 +25,7 @@
       default_image = <%= raw @blog.image.url.to_json %>
     <% end %>
   </div>
-  <div class="input_column row"><%= form.text_field :title, placeholder: "#タイトル", class: "input col-xs-12 col-md-offset-2 col-md-10" %></div>
-  <div class="input_column row"><%= form.text_field :content, placeholder: "コメント", class: "input col-xs-12 col-md-offset-2 col-md-10" %></div>
-
-  <div class="input_column row"><%= form.submit "投稿", class: "btn col-xs-12 col-md-offset-2 col-md-10" %></div>
+    <div class="input_column row"><%= form.text_field :title, placeholder: "#タイトル", class: "input col-xs-12" %></div>
+    <div class="input_column row"><%= form.text_field :content, placeholder: "コメント", class: "input col-xs-12" %></div>
+    <div class="input_column row"><%= form.submit "投稿", class: "btn" %></div>
 <% end %>

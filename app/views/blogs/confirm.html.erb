@@ -6,22 +6,20 @@
     <%= form.hidden_field :image_cache %>
 
     <div class="blogs_list row">
-      <div class="input_column col-xs-12">
+      <div class="col-xs-12 col-md-6">
         <%= image_tag @blog.image %>
       </div>
     </div>
 
     <div class="input_column row">#<%= @blog.title %></div>
     <div class="input_column row"><%= @blog.content %></div>
-
-    <div class="input_column row"><%= form.submit "登録", class: "btn col-xs-12 col-md-offset-2 col-md-10" %></div>
+    <div class="input_column row"><%= form.submit "登録", class: "btn" %></div>
   <% end %>
 
   <%= form_with(model: @blog, url: new_blog_path, local: true, method: "get") do |form| %>
     <%= form.hidden_field :title %>
     <%= form.hidden_field :content %>
     <%= form.hidden_field :image_cache %>
-
-    <div class="input_column row"><%= form.submit "戻る", name: "back", class: "btn col-xs-12 col-md-offset-2 col-md-10" %></div>
+    <div class="input_column row"><%= form.submit "戻る", name: "back", class: "btn" %></div>
   <% end %>
 </div>

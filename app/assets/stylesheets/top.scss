@@ -1,0 +1,141 @@
+.main {
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+
+.main img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 2px solid #F6F6F6;
+}
+
+.info1, .info2, .info3, .info4 {
+  padding: 40px;
+  background-color: #4DD4D0;
+  color: #fff;
+  border: 2px solid #F6F6F6;
+}
+
+.info3 p, .info4 p {
+  color: #fff;
+}
+
+.unsplash {
+  position: relative;
+  font-family: 'Handlee', cursive;
+}
+
+.photographer {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 0;
+  padding: 5px;
+  background-color: rgba(250, 250, 250, 0.5);
+  display: none;
+}
+
+@media (min-width: 600px) {
+  .main {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  }
+
+  .info1 {
+   grid-column: span 2;
+   grid-row: span 2;
+  }
+
+  .figure1 {
+    grid-column: span 3;
+    grid-row: span 2;
+  }
+
+  .figure4 {
+    grid-column: span 3;
+    grid-row: span 2;
+  }
+
+  .info2 {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+
+  .figure5 {
+    grid-column: span 1;
+    grid-row: span 2;
+  }
+
+  .figure6 {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+
+  .figure7 {
+   grid-column: span 2;
+   grid-row: span 2;
+  }
+
+  .info3 {
+    grid-column: span 3;
+    grid-row: span 1;
+  }
+
+  .figure8 {
+   grid-column: span 1;
+   grid-row: span 2;
+  }
+
+  .figure9 {
+   grid-column: span 3;
+   grid-row: span 1;
+  }
+
+  .figure10 {
+    grid-column: span 3;
+    grid-row: span 2;
+  }
+
+  .figure11 {
+    grid-column: span 3;
+    grid-row: span 1;
+  }
+
+  .info4 {
+    grid-column: span 3;
+    grid-row: span 1;
+  }
+
+  .figure12 {
+    grid-column: span 4;
+    grid-row: span 2;
+  }
+
+  .figure13 {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+}
+
+@media (max-width: 599px) {
+  .main img {
+    display: block;
+    width: 100%;
+    height: 100px;
+  }
+}
+
+////////////////// ScrollIn effect
+.fadein {
+    opacity : 0.1;
+    transform : translate(0, 100px);
+    transition : all 500ms;
+}
+
+/* 画面内に入った状態 */
+.fadein.scrollin {
+    opacity : 1;
+    transform : translate(0, 0);
+}
