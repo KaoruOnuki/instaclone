@@ -20,7 +20,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'bcrypt', '3.1.11'
 gem 'letter_opener_web'
-gem 'fog'
+gem 'fog-aws'
 gem 'unicorn'
 gem 'therubyracer', platforms: :ruby
 
