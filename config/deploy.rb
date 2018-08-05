@@ -39,6 +39,7 @@ set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets public/uploads}
 
 # Default value for keep_releases is 5
 set :keep_releases, 5
+after "deploy:restart", "deploy:cleanup"
 
 # Rubyのバージョン
 set :rbenv_ruby, '2.3.1'
